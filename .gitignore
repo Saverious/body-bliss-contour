@@ -4,14 +4,12 @@ Thumbs.db
 .tmp
 .sass-cache
 npm-debug.log
-node_modules
-package-lock.json
 yarn.lock
 netlify
 node_modules
-*.json
-.env
 .jshintrc
 .editorconfig
-bin
 gulpfile.js
+sendgrid.env
+tmp
+.env

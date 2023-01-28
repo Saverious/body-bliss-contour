@@ -1,0 +1,42 @@
+<%- include('../partials/sudoheader'); %>
+<%- include('../partials/sudosidebar'); %>
+<%- include('../partials/sudotopbar'); %>
+
+<% if (added.length>0){ %>
+    <div class="alert alert-success">
+      <%=added%>
+    </div>
+  <%}%>
+
+<div class="container-fluid">
+    <form action="/admin/add/item" method="post" enctype="multipart/form-data" >
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <label for="validationDefault01">Name</label>
+            <input type="text" name="pname" class="form-control" id="validationDefault01" required>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationDefault02">Price(ksh)</label>
+            <input type="number" name="pprice" class="form-control" id="validationDefault02" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+              <label for="validationDefault01">Image</label>
+              <input type="file" name="pimg" class="form-control" id="validationDefault01" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="col-md-4 mb-3">
+              <label for="validationDefault02">Description</label>
+              <textarea name="pdesc" class="form-control" id="validationDefault02" required></textarea>
+            </div>
+          </div>
+
+        <button class="btn btn-primary" type="submit">Add product</button>
+    </form>
+</div>
+
+<%- include('../partials/sudofooter'); %>

@@ -15,6 +15,13 @@ const userSchema = new mongoose.Schema({
     password:{
         type:String
     }
+},{
+    timestamps:true
+});
+
+// virtual for a specific user's url
+userSchema.virtual('url').get(function(){
+    return `/admin/customer/${this._id}`;
 });
 
 module.exports=mongoose.model('User',userSchema);

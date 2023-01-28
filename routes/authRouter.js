@@ -2,9 +2,22 @@ const express = require('express');
 const router = express.Router();
 const { body} = require('express-validator');
 
-const{ login,signUp } = require('../controllers/authController');
+const{authLimit}=require('../middlewares/rateLimit');
 
-router.post('/login',
+const{ 
+    signUp,
+    verifyAccount,
+    login,
+    resetPassReq,
+    resetPassForm,
+    changePass
+} = require('../controllers/authController');
+
+router.post('/password-reset-link',resetPassReq);
+router.get('/password/reset',resetPassForm);
+router.post('/new-password',changePass);
+
+router.post('/login', authLimit,
 // validate and sanitize form
 body('uname', 'username must be filled')
 .not()
@@ -17,10 +30,10 @@ body('upass', 'password must have a minimum of 8 characters')
 .isLength({min:8})
 .escape(),
 
-// login controller
+// login controller if no errors are found
 login);
 
-router.post('/signup',
+router.post('/signup', authLimit,
 body('uname', 'username must be filled')
 .not()
 .isEmpty()
@@ -37,5 +50,7 @@ body('uemail')
 
 // signup controller if no errors are found
 signUp);
+
+router.post('/confirm-signup',verifyAccount);
 
 module.exports = router;

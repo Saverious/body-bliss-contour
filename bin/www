@@ -1,0 +1,134 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+var app = require('../app');
+var debug = require('debug')('body-bliss-contour:server');
+var http = require('http');
+var { logging } = require('../config/logs');
+var mongoose = require('mongoose');
+
+/**
+ * Get port from environment and store in Express.
+ */
+
+var port = normalizePort(process.env.PORT || '3000');
+app.set('port', port);
+
+/**
+ * Create HTTP server.
+ */
+
+var server = http.createServer(app);
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+
+server.listen(port);
+server.on('error', onError);
+server.on('listening', onListening);
+
+/**
+ * Normalize a port into a number, string, or false.
+ */
+
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
+}
+
+/**
+ * Event listener for HTTP server "error" event.
+ */
+
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+
+  var bind = typeof port === 'string'
+    ? 'Pipe ' + port
+    : 'Port ' + port;
+
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case 'EACCES':
+      logging.error(bind + ' requires elevated privileges');
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      logging.error(bind + ' is already in use');
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
+
+/**
+ * Event listener for HTTP server "listening" event.
+ */
+
+function onListening() {
+  var addr = server.address();
+  var bind = typeof addr === 'string'
+    ? 'pipe ' + addr
+    : 'port ' + addr.port;
+  debug('Listening on ' + bind);
+}
+
+// Get current time
+function date(time){
+  var newTime=new Date(time);
+  var finalDate= newTime.getDate() + "/" + (newTime.getMonth()+1) + "/" + newTime.getFullYear();
+  var finalTime= newTime.getHours() + ":" + newTime.getMinutes() + ":" + newTime.getSeconds();
+  return `${finalDate} at ${finalTime}`;
+}
+
+// Handle graceful shutdown
+
+// SIGINT signal
+process.on('SIGINT',()=>{
+  logging.info(`SIGINT signal received on ${date(Date.now())}`);
+  try{
+    server.close(async()=>{
+      logging.info(`server closed on ${date(Date.now())}`);
+      await mongoose.connection.close().then(()=>{
+        logging.info('database connection closed');
+        process.exit(0);
+      });
+    });
+  }catch(err){
+    logging.error(err);
+  }
+});
+
+// SIGTERM signal
+process.on('SIGTERM',()=>{
+  logging.info(`SIGTERM signal received on ${date(Date.now())}`);
+  try{
+    server.close(async()=>{
+      logging.info(`server closed on ${date(Date.now())}`);
+      await mongoose.connection.close().then(()=>{
+        logging.info(`database connection closed on ${date(Date.now())}`);
+        process.exit(0);
+      });
+    });
+  }catch(err){
+    logging.error(err);
+  }
+});

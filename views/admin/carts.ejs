@@ -1,0 +1,51 @@
+<%- include('../partials/sudoheader'); %>
+<%- include('../partials/sudosidebar'); %>
+<%- include('../partials/sudotopbar'); %>
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Carts</h1>
+    <p class="mb-4">
+        Total number of carts- <%=data.length%>
+    </p>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <!--
+            <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+        </div>
+        -->
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Cart id</th>
+                            <th>Created at</th>
+                            <th>Cart details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% data.forEach(function(cart){ %>
+                            <% const time=cart.createdAt %>
+                            <% const newTime=new Date(time) %>
+                            <% const finalTime= newTime.getDate() + "/" + (newTime.getMonth()+1) + "/" + newTime.getFullYear() %>
+                            <tr>
+                                <th><%=cart._id%></th>
+                                <th><%=finalTime%></th>
+                                <th> <a href="<%=cart.url%>">View</a> </th>
+                            </tr>
+                        <%})%>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->
+
+<%- include('../partials/sudofooter'); %>

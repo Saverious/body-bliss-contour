@@ -1,0 +1,28 @@
+<%- include('../partials/sudoheader'); %>
+<%- include('../partials/sudosidebar'); %>
+<%- include('../partials/sudotopbar'); %>
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Customer details</h1>
+    <% const time=data.createdAt %>
+    <% const newTime=new Date(time) %>
+    <% const finalTime= newTime.getDate() + "/" + (newTime.getMonth()+1) + "/" + newTime.getFullYear() %>
+    <p class="mb-4">
+        Customer name- <%=data.name%> <br/>
+        Customer email address- <%=data.email%> <br/>
+        Registration date- <%=finalTime%> <br/>
+        <% if (locals.cart !==null){ %>
+            Find customer's cart details <a href="/admin/cart/<%=cart._id%>">here</a> <br/>
+        <%}%>
+        <% if (locals.order !==null){ %>
+            Find customer's order details <a href="/admin/order/<%=order._id%>">here</a>
+        <%}%>
+    </p>
+    
+</div>
+<!-- /.container-fluid -->
+
+<%- include('../partials/sudofooter'); %>

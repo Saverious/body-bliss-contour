@@ -14,9 +14,6 @@ const productSchema = new mongoose.Schema({
     },
 
     image:{
-        public_id:{
-            type:String
-        },
         url:{
             type:String
         }
@@ -25,7 +22,7 @@ const productSchema = new mongoose.Schema({
     timestamps:true
 });
 
-//virtual for product's url
+//virtual for a specific product's url
 productSchema.virtual('url').get(function(){
     return `/admin/product/${this._id}`;
 });

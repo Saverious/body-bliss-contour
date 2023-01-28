@@ -16,8 +16,8 @@ exports.lymphMass=(req,res,next)=>{
     });
 }
 
-exports.manicure=(req,res,next)=>{
-    res.render("user/serviceinfo/manicure",{
+exports.reviews=(req,res,next)=>{
+    res.render("user/serviceinfo/reviews",{
         title:"Manicure/Pedicure-Body Bliss Contour"
     });
 }

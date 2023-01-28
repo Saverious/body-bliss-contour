@@ -1,0 +1,73 @@
+<%- include('../partials/sudoheader'); %>
+<%- include('../partials/sudosidebar'); %>
+<%- include('../partials/sudotopbar'); %>
+
+    <% if(remove.length>0){ %>
+    <div class="alert alert-success">
+      <%=remove%>
+    </div>
+    <%}%>
+
+    <% if(updated.length>0){ %>
+        <div class="alert alert-success">
+          <%=updated%>
+        </div>
+    <%}%>
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Products data</h1>
+    <p class="mb-4">
+        Total number of products- <%=data.length%>
+    </p>
+    <a href="/admin/add/product" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Add New product</a>
+    <br/><br/>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <!--
+            <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+        </div>
+        -->
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Price(ksh)</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% data.forEach(function(item){ %>
+                            <tr>
+                                <th>
+                                    <img src="<%=item.image.url%>" width="140" height="120" >
+                                </th>
+                                <th><%=item.name%></th>
+                                <th><%=item.price%></th>
+                                <th>
+                                    <form action="/admin/<%=item._id%>/edit" method="get">
+                                        <button type="submit" class="btn btn-success">Edit</button>
+                                    </form> <br/>
+                                    <form action="/admin/<%=item._id%>/delete" method="post">
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
+                                </th>
+                            </tr>
+                        <%})%>
+                    </tbody> 
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->
+
+<%- include('../partials/sudofooter'); %>

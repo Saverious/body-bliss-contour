@@ -1,18 +1,39 @@
 <%- include('../../partials/header'); %>
-<%- include('../../partials/head'); %>
+
+<% if(locals.user){%>
+  <%- include('../../partials/carthead'); %>
+<%}else{%>
+  <% if(locals.admin){ %>
+    <%- include('../../partials/carthead'); %>
+  <%}else{%>
+    <%- include('../../partials/head'); %>
+  <%}%>
+<%}%>
+
+<% if (message1.length>0){ %>
+  <div class="alert alert-success">
+    <%=message1%>
+  </div>
+<%}%>
+
+<% if (message2.length>0){ %>
+  <div class="alert alert-success">
+    <%=message2%>
+  </div>
+<%}%>
     
-    <!--Service Section-->
+ <!--Service Section-->
 <div class="hero-slider">
     <!-- Slider Item -->
-    <div class="slider-item slide1" style="background-image:url(/images/spa/cosp1.jpg);">
+    <div class="slider-item slide1" style="background-image:url(/images/spa/istockphoto-1408439145-612x612.jpg);">
       <div class="container">
         <div class="row">
+          
             <div class="col-12">
                 <!-- Slide Content Start -->
                 <div class="content style text-center">
                   <h2 class="text-white text-bold mb-2">SHOP WITH US. COSMETICS JUST FOR YOU</h2>
                   <p class="tag-text mb-4">Your all in one arena,get products, get treatment.</p>
-                  <a href="#" class="btn btn-main btn-white" data-animation-in="slideInLeft">explore</a>
                 </div>
                 <!-- Slide Content End -->
             </div>
@@ -38,7 +59,7 @@
                             <div class="row">
                               <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
                                 <div class="bg-image hover-zoom ripple rounded ripple-surface">
-                                  <img src="<%=product.image.url%>" class="w-100" />
+                                  <img src="<%=product.image.url%>" width="150" height="140" />
                                   <a href="#!">
                                     <div class="hover-overlay">
                                       <div class="mask" style="background-color: rgba(253, 253, 253, 0.15);"></div>
@@ -56,10 +77,28 @@
                                 <div class="d-flex flex-row align-items-center mb-1">
                                   <h4 class="mb-1 me-1">Ksh<%=product.price%></h4>
                                 </div>
-                                <h6 class="text-success">Free shipping</h6>
-                                <div class="d-flex flex-column mt-4">
-                                  <button class="btn btn-primary btn-sm" type="button">ADD TO CART</button>
-                                </div>
+                                <!--
+                                  <h6 class="text-success">Free shipping</h6>
+                                -->
+                                  <div class="d-flex flex-column mt-4">
+                                      <% if(locals.user){%>
+                                        <form action="/cart/<%=user._id%>/add" method="post">
+                                          <input type="hidden" name="productId" value="<%=product._id%>">
+                                          <input type="hidden" name="quantity" value="1">
+                                          <button class="btn btn-primary btn-sm" type="submit">ADD TO CART</button>
+                                        </form>
+                                      <%}else if(locals.admin){%>
+                                        <form action="/cart/<%=admin._id%>/add" method="post">
+                                          <input type="hidden" name="productId" value="<%=product._id%>">
+                                          <input type="hidden" name="quantity" value="1">
+                                          <button class="btn btn-primary btn-sm" type="submit">ADD TO CART</button>
+                                        </form>
+                                      <%}else{%>
+                                        <form action="/cart/auth" method="get">
+                                          <button class="btn btn-primary btn-sm" type="submit">ADD TO CART</button>
+                                        </form>
+                                      <%}%>
+                                  </div>
                               </div>
                             </div>
                           </div>
