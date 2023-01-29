@@ -13,10 +13,54 @@
   </div>
 <%}%>
 
-<div class="login">
-    <div class="container">
-        <form action="/auth/login" method="post">
-            <!-- Email input -->
+<section class="section contact">
+  <!-- container start -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-5 ">
+        <!-- address start -->
+        <div class="address-block">
+          <!-- Location -->
+          <div class="media">
+            <i class="fas fa-map-marker-alt"></i>
+            <div class="media-body">
+              <h3>Location</h3>
+              <p>Nairobi <br>Kenya</p>
+            </div>
+          </div>
+          <!-- Phone -->
+          <div class="media">
+            <i class="fas fa-phone"></i>
+            <div class="media-body">
+              <h3>Phone</h3>
+              <p>
+                (+254) 759983109
+                <br>(+254) 759983109
+              </p>
+            </div>
+          </div>
+          <!-- Email -->
+          <div class="media">
+            <i class="far fa-envelope"></i>
+            <div class="media-body">
+              <h3>Email</h3>
+              <p>
+                inquiries@bodyblisscontour.com
+                <br>bodyblissc@gmail.com
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- address end -->
+      </div>
+
+      <div class="col-lg-4 col-md-5">
+        <div class="container">
+          <div class="text-center">
+            <p>Already have an account? Log in</p>
+          </div>
+          <form action="/auth/login" method="post">
+                
             <div class="form-outline mb-4">
               <label class="form-label" for="username">Username</label>
               <input type="text" id="username" name="uname" class="form-control" required>
@@ -27,7 +71,7 @@
               </div>
             <%}%>
           
-            <!-- Password input -->
+            
             <div class="form-outline mb-4">
               <label class="form-label" for="password">Password</label>
               <input type="password" id="password" name="upass" class="form-control" minlength="8" maxlength="12" required>
@@ -37,11 +81,12 @@
                 <%=message4%>
               </div>
             <%}%>
-          
-            <!-- 2 column grid layout for inline styling -->
+            
+            <button type="submit" class="btn btn-primary btn-block mb-4">Log in</button>
+
             <div class="row mb-4">
               <div class="col d-flex justify-content-center">
-                <!-- Checkbox -->
+                
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" value="" id="form2Example34" checked >
                   <label class="form-check-label" for="form2Example34"> Remember me </label>
@@ -49,20 +94,21 @@
               </div>
           
               <div class="col">
-                <!-- Simple link -->
+                
                 <a href="/password-reset">Forgot password?</a>
               </div>
             </div>
-          
-            <!-- Submit button -->
-            <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
-            
-            <!-- Register buttons -->
-            <div class="text-center">
-              <p>Not a member? Register below</a></p>
-            </div>
           </form>
+        </div>
+      </div>
+      <!--end of second column-->
 
+      <!--start of third column-->
+      <div class="col-lg-4 col-md-5">
+        <div class="container">
+          <div class="text-center">
+            <p>Not a member? Register below</p>
+          </div>
           <form action="/auth/signup" method="post">
             <div class="form-outline mb-4">
               <label class="form-label" for="username">Username</label>
@@ -83,10 +129,16 @@
                 <%=message6%>
               </div>
             <%}%>
-
-            <button type="submit" class="btn btn-primary btn-block mb-4">Submit</button>
+            <button type="submit" class="btn btn-primary btn-block mb-4">Register</button>
           </form>
+        </div>
+      </div>
+      <!--end of third column-->
+          
     </div>
-</div>
+    <!-- end of row-->
+  </div>
+  <!-- container end -->
+</section>
 
 <%- include('../../partials/footer'); %>
