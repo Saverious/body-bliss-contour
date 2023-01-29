@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "pm2 start bin/www -i max"
+    "start": "pm2 start bin/www"
   },
   "dependencies": {
     "@sendgrid/mail": "^7.7.0",
