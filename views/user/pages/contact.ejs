@@ -5,79 +5,83 @@
   <div class="alert alert-success">
     <%=contact1%> &check;
   </div>
-<%}%> 
-    
-    <section class="section contact">
-      <!-- container start -->
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4 col-md-5 ">
-            <!-- address start -->
-            <div class="address-block">
-              <!-- Location -->
-              <div class="media">
-                <i class="fas fa-map-marker-alt"></i>
-                <div class="media-body">
-                  <h3>Location</h3>
-                  <p>Nairobi,<br>Kenya</p>
-                </div>
-              </div>
-              <!-- Phone -->
-              <div class="media">
-                <i class="fas fa-phone"></i>
-                <div class="media-body">
-                  <h3>Phone</h3>
-                  <p>
-                    (+254) 759983109-calls
-                    <br>(+254) 759983109-whatsapp
-                  </p>
-                </div>
-              </div>
-              <!-- Email -->
-              <div class="media">
-                <i class="far fa-envelope"></i>
-                <div class="media-body">
-                  <h3>Email</h3>
-                  <p>
-                    inquiries@bodyblisscontour.com
-                  </p>
-                </div>
-              </div>
-            </div>
-            <!-- address end -->
-          </div>
-          <div class="col-lg-8 col-md-7">
-            <div class="contact-new">
-              <form action="/inquiry" method="post">
-                <!-- Name input -->
-                <div class="form-outline mb-4">
-                  <input type="text" id="form4Example1" name="uname" class="form-control" placeholder="Name" required />
-                </div>
+<%}%>
 
-                <!-- Email input -->
-                <div class="form-outline mb-4">
-                  <input type="email" id="form4Example1" name="uemail" class="form-control" placeholder="Email Address" required />
-                </div>
-              
-                <!-- Subject input -->
-                <div class="form-outline mb-4">
-                  <input type="text" id="form4Example2" name="subject" class="form-control" placeholder="Subject" required />
-                </div>
-              
-                <!-- Message input -->
-                <div class="form-outline mb-4">
-                  <textarea class="form-control" id="form4Example3" name="message" rows="4" placeholder="Message" required></textarea>
-                </div>
-              
-                <!-- Submit button -->
-                <button type="submit" class="btn btn-primary btn-block mb-4">Send Message</button>
-              </form>
+<section class="section contact">
+  <!-- container start -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-5 ">
+        <!-- address start -->
+        <div class="address-block">
+          <!-- Location -->
+          <div class="media">
+            <i class="fas fa-map-marker-alt"></i>
+            <div class="media-body">
+              <h3>Location</h3>
+              <p>Nairobi <br>Kenya</p>
+            </div>
+          </div>
+          <!-- Phone -->
+          <div class="media">
+            <i class="fas fa-phone"></i>
+            <div class="media-body">
+              <h3>Phone</h3>
+              <p>
+                (+254) 759983109
+                <br>(+254) 759983109
+              </p>
+            </div>
+          </div>
+          <!-- Email -->
+          <div class="media">
+            <i class="far fa-envelope"></i>
+            <div class="media-body">
+              <h3>Email</h3>
+              <p>
+                inquiries@bodyblisscontour.com
+                <br>bodyblissc@gmail.com
+              </p>
             </div>
           </div>
         </div>
+        <!-- address end -->
       </div>
-      <!-- container end -->
-    </section>
-    <!--====  End of Contact Form  ====-->
-    
+      <div class="col-lg-8 col-md-7">
+        <div class="contact-form">
+          <!-- contact form start -->
+          <form action="/inquiry" method="post" class="row">
+            <!-- name -->
+            <div class="col-lg-6">
+              <input type="text" name="uname" class="form-control main" placeholder="Name" required>
+            </div>
+            <!-- email -->
+            <div class="col-lg-6">
+              <input type="email" name="uemail" class="form-control main" placeholder="Email" required>
+            </div>
+            <!-- phone -->
+            <div class="col-lg-12">
+              <input type="tel" name="uphone" class="form-control main" placeholder="Phone" required>
+            </div>
+            <!-- subject -->
+            <div class="col-lg-12">
+              <input type="text" name="subject" class="form-control main" placeholder="Subject" required>
+            </div>
+            <!-- message -->
+            <div class="col-lg-12">
+              <textarea name="message" rows="10" class="form-control main" placeholder="Your message"></textarea>
+            </div>
+            <!-- submit button -->
+            <div class="col-md-12 text-right">
+              <button class="btn btn-primary" type="submit">Send Message</button>
+            </div>
+          </form>
+          <!-- contact form end -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- container end -->
+</section>
+
 <%- include('../../partials/footer'); %>
