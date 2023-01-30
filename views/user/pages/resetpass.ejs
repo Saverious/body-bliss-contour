@@ -1,31 +1,42 @@
 <%- include('../../partials/header'); %>
 <%- include('../../partials/head'); %>
 
-<% if (message1.length>0){ %>
-    <div class="alert alert-success">
-      <%=message1%>
-    </div>
-  <%}%>
-
   <% if (message2.length>0){ %>
     <div class="alert alert-success">
       <%=message2%>
     </div>
   <%}%>
-  
-<div class="login">
-    <div class="container">
-        <form action="/auth/password-reset-link" method="post">
-            <!-- Email input -->
-            <div class="form-outline mb-4">
-              <label class="form-label" for="form2Example1">Email</label>
-              <input type="email" id="uemail" name="uemail" placeholder="enter the email you used to register the account" class="form-control" required />
-            </div>
-          
-            <!-- Submit button -->
-            <button type="submit" class="btn btn-primary btn-block mb-4">Submit</button>
-          </form>
-    </div>
-</div>
 
-<%- include('../../partials/footer'); %>
+  <section class="section contact">
+    <!-- container start -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-5 "></div>
+
+        <div class="col-lg-4 col-md-5 ">
+          <div class="container">
+            <form action="/auth/password-reset-link" method="post">
+            
+              <div class="form-outline mb-4">
+                <label class="form-label" for="form2Example1">Email address</label>
+                <input type="email" id="uemail" name="uemail" placeholder="Enter the email address of this account" class="form-control" required />
+              </div>
+              <% if (message1.length>0){ %>
+                <div class="alert alert-danger">
+                  <%=message1%>
+                </div>
+              <%}%>
+            
+              <button type="submit" class="btn btn-primary btn-block mb-4">Submit</button>
+            </form>
+          </div>
+        </div>
+
+        <!--end of second column-->
+        <div class="col-lg-4 col-md-5 "></div>
+  
+      </div>
+      <!-- end of row-->
+    </div>
+    <!-- container end -->
+  </section>
