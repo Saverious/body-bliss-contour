@@ -1,35 +1,35 @@
 exports.fatCav=(req,res,next)=>{
     res.render("user/serviceinfo/fatcav",{
-        title:"Fat Cavitation-Body Bliss Contour"
+        title:"Fat Cavitation"
     });
 }
 
 exports.laserTher=(req,res,next)=>{
     res.render("user/serviceinfo/laserther",{
-        title:"Laser Therapy-Body Bliss Contour"
+        title:"Laser Therapy"
     });
 }
 
 exports.lymphMass=(req,res,next)=>{
     res.render("user/serviceinfo/lymphmass",{
-        title:"Lymphatic Massage-Body Bliss Contour"
+        title:"Lymphatic Massage"
     });
 }
 
 exports.reviews=(req,res,next)=>{
     res.render("user/serviceinfo/reviews",{
-        title:"Manicure/Pedicure-Body Bliss Contour"
+        title:"Manicure/Pedicure"
     });
 }
 
 exports.skinLight=(req,res,next)=>{
     res.render("user/serviceinfo/skinlight",{
-        title:"Skin Lightening-Body Bliss Contour"
+        title:"Skin Lightening"
     });
 }
 
 exports.woodTher=(req,res,next)=>{
     res.render("user/serviceinfo/woodther",{
-        title:"Wood Therapy-Body Bliss Contour"
+        title:"Wood Therapy"
     });
 }
