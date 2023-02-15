@@ -8,19 +8,19 @@ const { logging } = require('../config/logs');
 
 exports.homePage=(req,res,next)=>{
     res.render("user/pages/home",{
-        title:"Body Bliss Contour"
+        title:"Body Bliss Contour-Kenya"
     });
 }
 
 exports.aboutPage=(req,res,next)=>{
     res.render("user/pages/about",{
-        title:"About Us-Body Bliss Contour"
+        title:"About Us"
     });
 }
 
 exports.servicesPage=(req,res,next)=>{
     res.render("user/pages/services",{
-        title:"Services-Body Bliss Contour"
+        title:"Services"
     });
 }
 
@@ -45,7 +45,7 @@ exports.shoppingPage=async(req,res,next)=>{
                     logging.error(err);
                 }else{
                     res.render("user/pages/shopping",{
-                        title:"Shop now-Body Bliss Contour",
+                        title:"Shop now",
                         data:results.product,
                         user:results.user,
                         admin:results.admin,
@@ -62,14 +62,14 @@ exports.shoppingPage=async(req,res,next)=>{
 
 exports.contactPage=(req,res,next)=>{
     res.render("user/pages/contact",{
-        title:"Contact Us-Body Bliss Contour",
+        title:"Contact Us",
         contact1:req.flash('contact1')
     });
 }
 
 exports.loginPage=(req,res,next)=>{
     res.render("user/pages/login",{
-        title:"Login-Body Bliss Contour",
+        title:"Login",
         message1:req.flash('message'),
         message2:req.flash('welcome'),
         message3:req.flash('invalid-user'),
@@ -87,20 +87,20 @@ exports.verifyAccount=(req,res,next)=>{
 
 exports.renderEmptyCart=(req,res,next)=>{
     res.render("user/carts/cartempty",{
-        title:"Cart-Body Bliss Contour",
+        title:"Cart",
     });
 }
 
 exports.privPolicyPage=(req,res,next)=>{
     res.render("user/pages/privacy",{
-        title:"Privacy Policy-Body Bliss Contour"
+        title:"Privacy Policy"
     });
 }
 
 // A form to request password reset
 exports.resetPassword=(req,res,next)=>{
     res.render("user/pages/resetpass",{
-        title:"Reset Password-Body Bliss Contour",
+        title:"Reset Password",
         message1:req.flash('message1'),
         message2:req.flash('message2')
     });
