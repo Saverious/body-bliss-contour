@@ -79,12 +79,14 @@ exports.verifyAccount=async(req,res,next)=>{
                         if(uemail===process.env.ADMIN_EMAIL){
                             req.session.sudo=user.name;
                             req.session.save(()=>{
-                                res.send('Your account has been verified. Go back to main page');
+                                //req.flash('verified1','Your account has been verified.');
+                                res.redirect('/');
                             });
                         }else{
                             req.session.user=user.name;
                             req.session.save(()=>{
-                                res.send('Your account has been verified. Go back to main page');
+                                //req.flash('verified2','Your user account has been verified.');
+                                res.redirect('/');
                             });
                         }
                     });
