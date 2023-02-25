@@ -1,32 +1,35 @@
 <%- include('../../partials/header'); %>
 <%- include('../../partials/head'); %>
 
-<div class="signup">
+<div class="section contact">
     <div class="container">
-        <form action="/auth/new-password" method="post">
-          
-            <!-- Password input -->
-            <div class="form-outline mb-4">
-                <label class="form-label" for="form3Example4">Email</label>
-                <input type="email" id="uemail" name="uemail" class="form-control" required />
+        <div class="row">
+          <div class="col-lg-4 col-md-5 "></div>
+
+          <div class="col-lg-4 col-md-5 ">
+            <div class="container">
+              <form action="/auth/new-password" method="post">
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example4">Email address</label>
+                    <input type="email" id="uemail" name="uemail" class="form-control" required />
+                </div>
+    
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="form3Example4">One time password</label>
+                  <input type="password" id="otpass" name="otpass" class="form-control" required />
+                </div>
+    
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example4">New Password</label>
+                    <input type="password" id="newpass" name="newpass" class="form-control" minlength="8" maxlength="12" required />
+                  </div>
+              
+                <button type="submit" class="btn btn-primary btn-block mb-4">Submit</button>
+              </form>
             </div>
+          </div>
 
-            <div class="form-outline mb-4">
-              <label class="form-label" for="form3Example4">One time password</label>
-              <input type="password" id="otpass" name="otpass" class="form-control" required />
-            </div>
-
-            <!-- Password input -->
-            <div class="form-outline mb-4">
-                <label class="form-label" for="form3Example4">New Password</label>
-                <input type="password" id="newpass" name="newpass" class="form-control" minlength="8" maxlength="12" required />
-              </div>
-          
-            <!-- Submit button -->
-            <button type="submit" class="btn btn-primary btn-block mb-4">Submit</button>
-
-          </form>
+          <div class="col-lg-4 col-md-5 "></div>
+        </div>
     </div>
 </div>
-
-<%- include('../../partials/footer'); %>
