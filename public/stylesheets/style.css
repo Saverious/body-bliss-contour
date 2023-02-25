@@ -3313,32 +3313,6 @@ button:focus {
   margin-bottom: 100px;
 }
 
-.login{
-  margin-top: 100px;
-  margin-bottom: 100px;
-}
-
-.login form{
-  display: inline-block;
-  margin-left: 35%;
-  margin-right: 35%;
-  width: 30%;
-  text-align: left;
-}
-
-.signup{
-  margin-top: 100px;
-  margin-bottom: 100px;
-}
-
-.signup form{
-  display: inline-block;
-  margin-left: 35%;
-  margin-right: 35%;
-  width: 30%;
-  text-align: left;
-}
-
 .contact-new{
   display: inline-block;
   margin-left: 25%;
